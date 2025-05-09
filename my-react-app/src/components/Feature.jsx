@@ -1,5 +1,4 @@
 import "../styles/main.css";
-import { useState } from "react";
 
 export default function Feature({ title, children, logo }) {
   return (
