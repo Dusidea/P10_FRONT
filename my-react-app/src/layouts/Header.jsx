@@ -7,9 +7,22 @@ import { faCircleUser } from "@fortawesome/free-solid-svg-icons";
 function Header() {
   const location = useLocation();
   const pathname = location.pathname;
+  //variable pour connaitre le statut du mode edition
 
   return (
     <header>
+      {/* if (editmode){
+      <nav className = "edit-nav">
+        tout en vert
+        logo edition (clé)
+        ArgentBank tout vert
+        user name vert
+        icone fa user circle vert
+        icone rouage
+        icone power
+        </nav>
+      } */}
+
       <nav className="main-nav">
         <a className="main-nav-logo" href="./index">
           <img

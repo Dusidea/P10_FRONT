@@ -164,6 +164,23 @@ main {
   margin-bottom: 0.5rem;
 }
 
+.user-edit-buttons-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.user-edit-button {
+  display: flex;
+  justify-content: center;
+  border-color: #00bc77;
+  background-color: #00bc77;
+  color: #fff;
+  /* padding: 8px; */
+  width: 48%;
+  padding: 10px;
+  border-radius: 5px;
+}
+
 .sign-in-button {
   display: block;
   width: 100%;
@@ -211,6 +228,21 @@ main {
 .input-wrapper input {
   padding: 5px;
   font-size: 1.2rem;
+}
+
+.edit-user-info {
+  box-sizing: border-box;
+  background-color: white;
+  width: 300px;
+  margin: 0 auto;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  padding: 2rem;
+}
+
+.transaction-wrapper {
+  display: flex;
+  margin-top: 4rem;
 }
 
 .footer {
@@ -285,6 +317,12 @@ main {
   border-color: #00bc77;
   background-color: #00bc77;
   color: #fff;
+}
+
+.transaction-button-close {
+  border: 0;
+  background-color: white;
+  font-size: 5rem;
 }
 
 /* added fa style to get identical style as html template */
