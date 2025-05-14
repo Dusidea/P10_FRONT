@@ -1,4 +1,4 @@
-import Account from "../components/Account";
+import Account from "../features/account/Account";
 import "../styles/main.css";
 
 function Transactions() {

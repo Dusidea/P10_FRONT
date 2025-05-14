@@ -1,6 +1,6 @@
 import { useState } from "react";
-import Account from "../components/Account";
-import EditUserInfo from "../components/EditUserInfo";
+import Account from "../features/account/Account";
+import EditUserInfo from "../features/editUserInfo/EditUserInfo";
 import "../styles/main.css";
 
 function UserPage() {
