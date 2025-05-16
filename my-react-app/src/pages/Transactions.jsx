@@ -1,4 +1,5 @@
 import Account from "../features/account/Account";
+import TransactionItem from "../features/transactionItem/TransactionItem";
 import "../styles/main.css";
 
 function Transactions() {
@@ -10,8 +11,34 @@ function Transactions() {
           amount="10000000"
           description="placeholder description"
         />
+
+        <div className="transaction-array">
+          <div className="transaction-array-header">Date</div>
+          <div className="transaction-array-header">Description</div>
+          <div className="transaction-array-header">Amount</div>
+          <div className="transaction-array-header">Balance</div>
+          <div className="transaction-array-header-empty"></div>
+        </div>
+        <TransactionItem
+          date="date_holder"
+          description="description_holder"
+          amount="amount_older"
+          balance="balance_holder"
+        />
+        <TransactionItem
+          date="date_holder"
+          description="description_holder"
+          amount="amount_older"
+          balance="balance_holder"
+        />
+
+        <TransactionItem
+          date="date_holder"
+          description="description_holder"
+          amount="amount_older"
+          balance="balance_holder"
+        />
       </div>
-      <p>liste des transactions</p>
     </main>
   );
 }

@@ -3,7 +3,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
-import { enableTransactionMode } from "../transaction/transactionSlice";
+import {
+  disableTransactionMode,
+  enableTransactionMode,
+} from "../transaction/transactionSlice";
 
 export default function Account({ title, amount, description }) {
   const dispatch = useDispatch();
@@ -17,6 +20,10 @@ export default function Account({ title, amount, description }) {
     //+ redirection au clic
     navigate("/transactions");
   };
+  const returnClick = () => {
+    dispatch(disableTransactionMode());
+    navigate("/user");
+  };
 
   return (
     <section className="account">
@@ -27,7 +34,10 @@ export default function Account({ title, amount, description }) {
       </div>
       <div className="account-content-wrapper cta">
         {transactionMode ? (
-          <button className="transaction-button-close">
+          <button
+            onClick={() => returnClick()}
+            className="transaction-button-close"
+          >
             <FontAwesomeIcon icon={faXmark} />
           </button>
         ) : (
