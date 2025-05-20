@@ -212,6 +212,14 @@ main {
   font-size: 5rem;
 }
 
+.sign-in-error {
+  /* background-color: #12002b; */
+  background-color: rgb(158, 34, 34);
+  color: white;
+  margin-bottom: 20px;
+  padding: 10px;
+}
+
 .input-remember {
   display: flex;
 }

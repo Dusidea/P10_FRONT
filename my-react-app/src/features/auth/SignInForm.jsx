@@ -1,3 +1,4 @@
+import { setLoginError } from "./authSlice";
 import { useLoginMutation } from "./authApi";
 import { setCredentials } from "./authSlice";
 import { useNavigate } from "react-router";
@@ -15,6 +16,7 @@ export default function SignInForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      dispatch(setLoginError(false));
       const data = await login({ email, password }).unwrap();
       // pour stocker  le token dans redux (pourrait etre dans session storage)
       const token = data.body;
@@ -22,6 +24,11 @@ export default function SignInForm() {
       navigate("/user");
     } catch (err) {
       console.error("Login failed:", err);
+      if (err.status === 400 && err.data.message) {
+        if (err.data.message.includes("User")) {
+          dispatch(setLoginError("email"));
+        } else dispatch(setLoginError("password"));
+      }
     }
   };
 
