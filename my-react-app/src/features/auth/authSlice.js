@@ -3,7 +3,6 @@ import { createSlice } from "@reduxjs/toolkit";
 //pour conserver le nom d'utilisateur et son token d'une page à l'autre
 
 const initialState = {
-  user: null,
   token: null,
   isAuthenticated: false,
 };
@@ -13,9 +12,7 @@ export const authSlice = createSlice({
   initialState,
   reducers: {
     setCredentials: (state, action) => {
-      const { user, token } = action.payload;
-      state.user = user;
-      state.token = token;
+      state.token = action.payload.token;
       state.isAuthenticated = true;
     },
     logOut: (state) => {
