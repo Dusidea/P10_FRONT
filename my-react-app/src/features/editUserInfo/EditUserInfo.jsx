@@ -1,8 +1,12 @@
+import { useState } from "react";
+import { useSelector } from "react-redux";
 import { useUpdateNameMutation } from "./userProfileApi";
 import "../../styles/main.css";
-import { useState } from "react";
 
 export default function EditUserInfo() {
+  const { userName, firstName, lastName } = useSelector(
+    (state) => state.userProfile
+  );
   const [newName, setNewName] = useState("");
   const [updateName] = useUpdateNameMutation();
   const handleUpdate = async (e) => {
@@ -24,17 +28,17 @@ export default function EditUserInfo() {
           <input
             type="text"
             id="username"
-            placeholder="Tony"
+            placeholder={userName}
             onChange={(e) => setNewName(e.target.value)}
           />
         </div>
         <div className="input-wrapper">
           <label htmlFor="firstname">First name: </label>
-          <input type="text" id="firstname" placeholder="Tony" disabled />
+          <input type="text" id="firstname" placeholder={firstName} disabled />
         </div>
         <div className="input-wrapper">
           <label htmlFor="lastname">Last name: </label>
-          <input type="text" id="lastname" placeholder="Stark" disabled />
+          <input type="text" id="lastname" placeholder={lastName} disabled />
         </div>
         <div className="user-edit-buttons-wrapper">
           <button onClick={handleUpdate} className="user-edit-button">
