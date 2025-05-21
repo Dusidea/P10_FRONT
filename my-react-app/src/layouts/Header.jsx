@@ -1,23 +1,29 @@
-import { useLocation } from "react-router";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+
 import { logOut } from "../features/auth/authSlice";
+import { useGetUserProfileQuery } from "../features/editUserInfo/userProfileApi";
+
 import argentBankLogo from "../assets/argentBankLogo.webp";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleUser } from "@fortawesome/free-solid-svg-icons";
 import "../styles/main.css";
 
 function Header() {
-  const location = useLocation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
-
   const signOutClick = () => {
     navigate("/");
     dispatch(logOut());
   };
+  const token = useSelector((state) => state.auth.token);
+  //pour éviter de lancer getUserProfile avant d'avoir le token (obligatoire)
+  const { data } = useGetUserProfileQuery(undefined, {
+    skip: !token,
+  });
+  const user = data?.body;
 
   return (
     <header>
@@ -33,9 +39,9 @@ function Header() {
 
         {isAuthenticated ? (
           <div>
-            <Link className="main-nav-item" to="./user.html">
+            <Link className="main-nav-item" to="./user">
               <FontAwesomeIcon icon={faCircleUser} className="fa-icon" />
-              Tony
+              {user?.firstName}
             </Link>
             <a onClick={() => signOutClick()} className="main-nav-item">
               <i className="fa fa-sign-out"></i>

@@ -9,7 +9,7 @@ import { Link } from "react-router";
 function UserPage() {
   const [editMode, setEditMode] = useState(false);
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
-  console.log("authentifié ?", isAuthenticated);
+
   return isAuthenticated ? (
     <main className="main bg-dark">
       {editMode ? (
@@ -49,7 +49,7 @@ function UserPage() {
   ) : (
     <main className="main bg-dark">
       <section className="sign-in-content">
-        Connectez-vous pour accéder à vos comptes : rendez-vous sur la page de{" "}
+        Pour accéder à vos comptes rendez-vous sur la page de{" "}
         <Link to="/sign-in">connexion</Link>.
       </section>
     </main>
