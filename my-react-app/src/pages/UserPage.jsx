@@ -1,12 +1,16 @@
 import { useState } from "react";
+import { useSelector } from "react-redux";
+
 import Account from "../features/account/Account";
 import EditUserInfo from "../features/editUserInfo/EditUserInfo";
 import "../styles/main.css";
+import { Link } from "react-router";
 
 function UserPage() {
   const [editMode, setEditMode] = useState(false);
-
-  return (
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  console.log("authentifié ?", isAuthenticated);
+  return isAuthenticated ? (
     <main className="main bg-dark">
       {editMode ? (
         <EditUserInfo />
@@ -41,6 +45,13 @@ function UserPage() {
         description="Current Balance"
         transactionMode={false}
       />
+    </main>
+  ) : (
+    <main className="main bg-dark">
+      <section className="sign-in-content">
+        Connectez-vous pour accéder à vos comptes : rendez-vous sur la page de{" "}
+        <Link to="/sign-in">connexion</Link>.
+      </section>
     </main>
   );
 }
