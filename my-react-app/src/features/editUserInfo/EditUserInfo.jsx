@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useUpdateNameMutation } from "./userProfileApi";
-import { disableEditMode } from "./userProfileSlice";
+import { disableEditMode, setUserProfile } from "./userProfileSlice";
 import "../../styles/main.css";
 
 export default function EditUserInfo() {
@@ -15,6 +15,7 @@ export default function EditUserInfo() {
     e.preventDefault();
     try {
       const response = await updateName(newName).unwrap();
+      dispatch(setUserProfile({ userName: newName }));
       console.log("Profil mis à jour :", response);
     } catch (error) {
       console.error("Erreur lors de la mise à jour :", error);
@@ -23,7 +24,6 @@ export default function EditUserInfo() {
   const handleCancel = async (e) => {
     e.preventDefault();
     dispatch(disableEditMode());
-    // ajouter fermeture setEditMode false => passer editMode dans redux
   };
   console.log("newName ", newName);
   return (

@@ -13,7 +13,7 @@ function App() {
   // calling APIroute getUserProfile to get and store user profile info
   const dispatch = useDispatch();
   const token = useSelector((state) => state.auth.token);
-  console.log("appjsx token is ", token);
+
   // this call can only happen if user token is defined
   const { data, isSuccess } = useGetUserProfileQuery(undefined, {
     skip: !token,
@@ -22,7 +22,7 @@ function App() {
   useEffect(() => {
     if (isSuccess && data && data.body) {
       dispatch(setUserProfile(data.body));
-    }
+    } else console.log("pb donnée non défini dans app pour userProfile");
   }, [isSuccess, data, dispatch]);
 
   return (

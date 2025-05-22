@@ -8,7 +8,6 @@ import { Link } from "react-router";
 import { setEditMode } from "../features/editUserInfo/userProfileSlice";
 
 function UserPage() {
-  // const [editMode, setEditMode] = useState(false);
   const editMode = useSelector((state) => state.userProfile.editMode);
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const { firstName, lastName } = useSelector((state) => state.userProfile);

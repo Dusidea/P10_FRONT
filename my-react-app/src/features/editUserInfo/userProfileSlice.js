@@ -15,11 +15,14 @@ const userProfileSlice = createSlice({
   reducers: {
     setUserProfile: (state, action) => {
       const { id, email, firstName, lastName, userName } = action.payload;
-      state.id = id;
-      state.email = email;
-      state.firstName = firstName;
-      state.lastName = lastName;
-      state.userName = userName;
+      // conditions make the reducer non destructive :
+      // the reducer allows updating one field at a time (and leaving the others as they are)
+      // (we use these feature for userName update)
+      if (id !== undefined) state.id = id;
+      if (email !== undefined) state.email = email;
+      if (firstName !== undefined) state.firstName = firstName;
+      if (lastName !== undefined) state.lastName = lastName;
+      if (userName !== undefined) state.userName = userName;
     },
     setEditMode: (state) => {
       state.editMode = true;
