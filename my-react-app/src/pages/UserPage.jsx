@@ -1,14 +1,18 @@
-import { useState } from "react";
-import { useSelector } from "react-redux";
+// import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import Account from "../features/account/Account";
 import EditUserInfo from "../features/editUserInfo/EditUserInfo";
 import "../styles/main.css";
 import { Link } from "react-router";
+import { setEditMode } from "../features/editUserInfo/userProfileSlice";
 
 function UserPage() {
-  const [editMode, setEditMode] = useState(false);
+  // const [editMode, setEditMode] = useState(false);
+  const editMode = useSelector((state) => state.userProfile.editMode);
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  const { firstName, lastName } = useSelector((state) => state.userProfile);
+  const dispatch = useDispatch();
 
   return isAuthenticated ? (
     <main className="main bg-dark">
@@ -19,9 +23,12 @@ function UserPage() {
           <h1>
             Welcome back
             <br />
-            Tony Jarvis!
+            {firstName} {lastName}!
           </h1>
-          <button onClick={() => setEditMode(true)} className="edit-button">
+          <button
+            onClick={() => dispatch(setEditMode())}
+            className="edit-button"
+          >
             Edit Name
           </button>
         </div>

@@ -6,6 +6,7 @@ const initialState = {
   firstName: "",
   lastName: "",
   userName: "",
+  editMode: false,
 };
 
 const userProfileSlice = createSlice({
@@ -20,9 +21,16 @@ const userProfileSlice = createSlice({
       state.lastName = lastName;
       state.userName = userName;
     },
+    setEditMode: (state) => {
+      state.editMode = true;
+    },
+    disableEditMode: (state) => {
+      state.editMode = false;
+    },
   },
 });
 
-export const { setUserProfile } = userProfileSlice.actions;
+export const { setUserProfile, setEditMode, disableEditMode } =
+  userProfileSlice.actions;
 
 export default userProfileSlice.reducer;

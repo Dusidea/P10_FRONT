@@ -1,12 +1,14 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useUpdateNameMutation } from "./userProfileApi";
+import { disableEditMode } from "./userProfileSlice";
 import "../../styles/main.css";
 
 export default function EditUserInfo() {
   const { userName, firstName, lastName } = useSelector(
     (state) => state.userProfile
   );
+  const dispatch = useDispatch();
   const [newName, setNewName] = useState("");
   const [updateName] = useUpdateNameMutation();
   const handleUpdate = async (e) => {
@@ -17,6 +19,11 @@ export default function EditUserInfo() {
     } catch (error) {
       console.error("Erreur lors de la mise à jour :", error);
     }
+  };
+  const handleCancel = async (e) => {
+    e.preventDefault();
+    dispatch(disableEditMode());
+    // ajouter fermeture setEditMode false => passer editMode dans redux
   };
   console.log("newName ", newName);
   return (
@@ -44,7 +51,9 @@ export default function EditUserInfo() {
           <button onClick={handleUpdate} className="user-edit-button">
             Save
           </button>
-          <button className="user-edit-button">Cancel</button>
+          <button onClick={handleCancel} className="user-edit-button">
+            Cancel
+          </button>
         </div>
       </form>
     </section>
