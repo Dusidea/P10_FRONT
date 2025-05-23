@@ -1,5 +1,5 @@
 import Account from "../features/account/Account";
-import TransactionItem from "../features/transactionItem/TransactionItem";
+import TransactionItem from "../features/transaction/TransactionItem";
 import "../styles/main.css";
 
 function Transactions() {

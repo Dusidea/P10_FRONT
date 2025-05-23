@@ -16,6 +16,7 @@ export default function EditUserInfo() {
     try {
       const response = await updateName(newName).unwrap();
       dispatch(setUserProfile({ userName: newName }));
+      dispatch(disableEditMode());
       console.log("Profil mis à jour :", response);
     } catch (error) {
       console.error("Erreur lors de la mise à jour :", error);

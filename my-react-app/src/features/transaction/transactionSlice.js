@@ -1,7 +1,8 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   transactionMode: false,
+  itemOpen: false,
 };
 
 const transactionSlice = createSlice({
@@ -14,10 +15,20 @@ const transactionSlice = createSlice({
     disableTransactionMode: (state) => {
       state.transactionMode = false;
     },
+    enableItemOpen: (state) => {
+      state.itemOpen = true;
+    },
+    disableItemOpen: (state) => {
+      state.itemOpen = false;
+    },
   },
 });
 
-export const { enableTransactionMode, disableTransactionMode } =
-  transactionSlice.actions;
+export const {
+  enableTransactionMode,
+  disableTransactionMode,
+  enableItemOpen,
+  disableItemOpen,
+} = transactionSlice.actions;
 
 export default transactionSlice.reducer;

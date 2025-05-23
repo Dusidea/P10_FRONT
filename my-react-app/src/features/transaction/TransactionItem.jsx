@@ -1,6 +1,6 @@
 import "../../styles/main.css";
 import { useSelector, useDispatch } from "react-redux";
-import { disableItemOpen, enableItemOpen } from "./transactionItemSlice";
+import { disableItemOpen, enableItemOpen } from "./transactionSlice";
 
 export default function TransactionItem({
   date,
@@ -9,9 +9,10 @@ export default function TransactionItem({
   balance,
 }) {
   const dispatch = useDispatch();
-  const itemOpen = useSelector((state) => state.transactionItem.itemOpen);
+  const itemOpen = useSelector((state) => state.transaction.itemOpen);
   const openClick = () => {
     dispatch(enableItemOpen());
+    console.log("open clic");
   };
   const closeClick = () => {
     dispatch(disableItemOpen());
@@ -27,7 +28,7 @@ export default function TransactionItem({
         {itemOpen ? (
           <>
             <button onClick={() => closeClick()}>pour fermer</button>
-            {/* <div>Contenu détaillé</div> */}
+            <div>Contenu détaillé</div>
           </>
         ) : (
           <button onClick={() => openClick()}>pour ouvrir</button>
