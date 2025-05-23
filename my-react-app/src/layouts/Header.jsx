@@ -30,11 +30,12 @@ function Header() {
         </Link>
 
         {isAuthenticated ? (
-          <div>
+          <div className="main-nav-login">
             <Link className="main-nav-item" to="./user">
               <FontAwesomeIcon icon={faCircleUser} className="fa-icon" />
               {currentUserName}
             </Link>
+
             <a onClick={() => signOutClick()} className="main-nav-item">
               <i className="fa fa-sign-out"></i>
               Sign Out

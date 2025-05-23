@@ -1,5 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+// storing user Info after getUserProfile request
+
 const initialState = {
   id: "",
   email: "",

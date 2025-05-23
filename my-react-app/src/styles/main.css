@@ -87,6 +87,10 @@ main {
   width: 200px;
 }
 
+.main-nav-login {
+  display: flex;
+}
+
 .hero {
   background-image: url("../assets/bank-tree.webp");
   background-position: 0 -50px;

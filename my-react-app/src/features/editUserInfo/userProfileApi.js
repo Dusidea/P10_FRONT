@@ -1,6 +1,8 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { baseQueryWithAuth } from "../../services/baseQueryWithAuth";
 
+// defining the getUserProfile request
+
 export const userProfileAPI = createApi({
   reducerPath: "userProfileAPI",
   baseQuery: baseQueryWithAuth,

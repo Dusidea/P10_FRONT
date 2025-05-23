@@ -15,7 +15,7 @@ const rootReducer = combineReducers({
 
 export const store = configureStore({
   reducer: rootReducer,
-  // middleware pour l'API
+  // API Middleware
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware()
       .concat(authAPI.middleware)

@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-//pour conserver le nom d'utilisateur et son token d'une page à l'autre
+// to store user's name and token
 
 const initialState = {
   token: null,

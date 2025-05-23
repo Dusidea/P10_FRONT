@@ -1,6 +1,4 @@
-// import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
 import Account from "../features/account/Account";
 import EditUserInfo from "../features/editUserInfo/EditUserInfo";
 import "../styles/main.css";

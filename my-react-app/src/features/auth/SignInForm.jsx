@@ -18,7 +18,7 @@ export default function SignInForm() {
     try {
       dispatch(setLoginError(false));
       const data = await login({ email, password }).unwrap();
-      // pour stocker  le token dans redux (pourrait etre dans session storage)
+      // to store the token via Redux (we could also use the browser's local storage)
       const token = data.body;
       dispatch(setCredentials(token));
       navigate("/user");
