@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { baseQueryWithAuth } from "../../services/baseQueryWithAuth";
 
-// construction de la requête API avec RT Query
+// building API request with RT Query
 export const authAPI = createApi({
   reducerPath: "authAPI",
   baseQuery: baseQueryWithAuth,

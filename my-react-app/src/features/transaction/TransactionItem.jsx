@@ -12,7 +12,6 @@ export default function TransactionItem({
   const itemOpen = useSelector((state) => state.transaction.itemOpen);
   const openClick = () => {
     dispatch(enableItemOpen());
-    console.log("open clic");
   };
   const closeClick = () => {
     dispatch(disableItemOpen());

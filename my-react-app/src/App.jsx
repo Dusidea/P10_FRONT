@@ -22,7 +22,7 @@ function App() {
   useEffect(() => {
     if (isSuccess && data && data.body) {
       dispatch(setUserProfile(data.body));
-    } else console.log("pb donnée non défini dans app pour userProfile");
+    }
   }, [isSuccess, data, dispatch]);
 
   return (
