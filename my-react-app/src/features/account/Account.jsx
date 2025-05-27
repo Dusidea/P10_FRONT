@@ -15,9 +15,9 @@ export default function Account({ title, amount, description }) {
     (state) => state.transaction.transactionMode
   );
   const handleClick = () => {
-    //mettre à jour le state via redux (transaction mode "on")
+    //updating redux store (transaction mode "on")
     dispatch(enableTransactionMode());
-    //+ redirection au clic
+    //+ redirecting
     navigate("/transactions");
   };
   const returnClick = () => {

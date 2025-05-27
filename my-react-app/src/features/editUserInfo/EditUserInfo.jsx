@@ -13,6 +13,12 @@ export default function EditUserInfo() {
   const [updateName] = useUpdateNameMutation();
   const handleUpdate = async (e) => {
     e.preventDefault();
+
+    if (!newName.trim()) {
+      alert("Le nom d'utilisateur ne peut pas être vide.");
+      return;
+    }
+
     try {
       const response = await updateName(newName).unwrap();
       dispatch(setUserProfile({ userName: newName }));
