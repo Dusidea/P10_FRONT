@@ -12,9 +12,9 @@ import "./styles/main.css";
 function App() {
   // calling APIroute getUserProfile to get and store user profile info
   const dispatch = useDispatch();
-  const token = useSelector((state) => state.auth.token);
 
   // this call can only happen if user token is defined
+  const token = useSelector((state) => state.auth.token);
   const { data, isSuccess } = useGetUserProfileQuery(undefined, {
     skip: !token,
   });

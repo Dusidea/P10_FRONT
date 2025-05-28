@@ -43,6 +43,7 @@ export default function SignInForm() {
     // Succès : on récupère le token et on navigue
     const token = result.data.body;
     dispatch(setCredentials(token));
+    // dispatch(setCredentials());
     navigate("/user");
   };
 
