@@ -15,21 +15,35 @@ export default function SignInForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      dispatch(setLoginError(false));
-      const data = await login({ email, password }).unwrap();
-      // to store the token via Redux (we could also use the browser's local storage)
-      const token = data.body;
-      dispatch(setCredentials(token));
-      navigate("/user");
-    } catch (err) {
-      console.error("Login failed:", err);
-      if (err.status === 400 && err.data.message) {
-        if (err.data.message.includes("User")) {
+
+    dispatch(setLoginError(false));
+    // const data = await login({ email, password }).unwrap();
+    const result = await login({ email, password });
+    // gestion des retours d'erreur de l'API
+    if (result.error) {
+      const error = result.error;
+
+      switch (error.code) {
+        case "invalid_email":
           dispatch(setLoginError("email"));
-        } else dispatch(setLoginError("password"));
+          break;
+        case "invalid_password":
+          dispatch(setLoginError("password"));
+          break;
+        case "server_error":
+          dispatch(setLoginError("server"));
+          break;
+        default:
+          dispatch(setLoginError("unknown"));
       }
+
+      return;
     }
+
+    // Succès : on récupère le token et on navigue
+    const token = result.data.body;
+    dispatch(setCredentials(token));
+    navigate("/user");
   };
 
   return (

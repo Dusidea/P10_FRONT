@@ -3,12 +3,16 @@ import { useSelector } from "react-redux";
 
 export default function LoginError() {
   const loginError = useSelector((state) => state.auth.loginError);
-  const emailError = "Votre email n'est pas reconnu";
-  const passwordError = "Votre mot de passe est erroné";
+  const errorMessages = {
+    email: "Votre email n'est pas reconnu",
+    password: "Votre mot de passe est erroné",
+    server: "Le serveur ne répond pas",
+    unknown: "Une erreur inconnue est survenue",
+  };
 
-  return (
-    <div className="sign-in-error">
-      {loginError === "email" ? emailError : passwordError}
-    </div>
-  );
+  const errorMessage = errorMessages[loginError];
+
+  return errorMessage ? (
+    <div className="sign-in-error">{errorMessage}</div>
+  ) : null;
 }
