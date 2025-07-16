@@ -2,7 +2,7 @@ import { fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const baseQueryWithAuth = async (args, api, extraOptions) => {
   const rawBaseQuery = fetchBaseQuery({
-    baseUrl: "https://p10-argentbank-backend.onrender.com",
+    baseUrl: "https://p10-argentbank-backend.onrender.com/api/v1/user/login",
     prepareHeaders: (headers, { getState }) => {
       const token = getState().auth.token;
       if (token) {
