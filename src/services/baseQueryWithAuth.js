@@ -11,7 +11,7 @@ export const baseQueryWithAuth = async (args, api, extraOptions) => {
       return headers;
     },
   });
-
+  console.log("→ base query called with:", args);
   try {
     const result = await rawBaseQuery(args, api, extraOptions);
 
